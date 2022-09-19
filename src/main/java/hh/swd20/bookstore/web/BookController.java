@@ -40,4 +40,9 @@ public class BookController {
 		repository.deleteById(bookId);
 		return "redirect:../booklist";
 	}
+	
+	@RequestMapping(value = "/edit/{id}")
+	public String editBook(Model model) {
+		return "editbook";
+	}
 }
