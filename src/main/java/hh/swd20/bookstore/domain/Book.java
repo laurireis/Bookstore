@@ -21,9 +21,17 @@ public class Book {
 	private double price;
 	
 	// getters and setters
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	public String getTitle() {
 		return title;
 	}
+	
 	public void setTitle(String title) {
 		this.title = title;
 	}
@@ -63,14 +71,7 @@ public class Book {
 	}
 	
 	// nonparametric constructor
-	public Book() {
-		super();
-		this.title = null;
-		this.author = null;
-		this.year = 0;
-		this.isbn = null;
-		this.price = 0;
-	}
+	public Book() {}
 	
 	// toString
 	@Override
