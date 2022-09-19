@@ -1,10 +1,21 @@
 package hh.swd20.bookstore.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Book {
 	
 	// attributes
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
 	private String title;
 	private String author;
+	@Column(name = "publishing_year")
 	private int year;
 	private String isbn;
 	private double price;

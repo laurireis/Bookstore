@@ -5,6 +5,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import hh.swd20.bookstore.domain.Book;
+
 @Controller
 public class BookController {
 	
