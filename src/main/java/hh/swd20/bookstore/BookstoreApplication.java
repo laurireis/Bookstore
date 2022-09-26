@@ -10,6 +10,8 @@ import org.springframework.context.annotation.Bean;
 
 import hh.swd20.bookstore.domain.Book;
 import hh.swd20.bookstore.domain.BookRepository;
+import hh.swd20.bookstore.domain.Category;
+import hh.swd20.bookstore.domain.CategoryRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -21,13 +23,28 @@ public class BookstoreApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner bookDemo(BookRepository repository) {
+	public CommandLineRunner bookDemo(BookRepository brepository, CategoryRepository crepository) {
 		return (args) -> {
-			repository.save(new Book("Pimeät kuut", "Tommi Kinnunen", 2022, "9789510480991", 28.95));
-			repository.save(new Book("Opetuslapsi", "Kari Hotakainen", 2022, "9789523880603", 25.95));
+			log.info("Create a few categories");
+			Category category1 = new Category("Fiction");
+			crepository.save(category1);
+			Category category2 = new Category("Scifi");
+			crepository.save(category2);
+			Category category3 = new Category("Comic");
+			crepository.save(category3);
 			
-			log.info("fetch books");
-			for (Book book : repository.findAll()) {
+			
+			log.info("Save some books");
+			brepository.save(new Book("Pimeät kuut", "Tommi Kinnunen", 2022, "9789510480991", 28.95));
+			brepository.save(new Book("Opetuslapsi", "Kari Hotakainen", 2022, "9789523880603", 25.95));
+			
+			log.info("Fetch all the categories");
+			for (Category category : crepository.findAll()) {
+				log.info(category.toString());
+			}
+			
+			log.info("Fetch all the books");
+			for (Book book : brepository.findAll()) {
 				log.info(book.toString());
 			}
 		};
