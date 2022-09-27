@@ -35,8 +35,8 @@ public class BookstoreApplication {
 			
 			
 			log.info("Save some books");
-			brepository.save(new Book("Pimeät kuut", "Tommi Kinnunen", 2022, "9789510480991", 28.95));
-			brepository.save(new Book("Opetuslapsi", "Kari Hotakainen", 2022, "9789523880603", 25.95));
+			brepository.save(new Book("Pimeät kuut", "Tommi Kinnunen", 2022, "9789510480991", 28.95, category1));
+			brepository.save(new Book("Opetuslapsi", "Kari Hotakainen", 2022, "9789523880603", 25.95, category1));
 			
 			log.info("Fetch all the categories");
 			for (Category category : crepository.findAll()) {
