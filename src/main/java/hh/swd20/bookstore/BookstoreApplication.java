@@ -12,6 +12,8 @@ import hh.swd20.bookstore.domain.Book;
 import hh.swd20.bookstore.domain.BookRepository;
 import hh.swd20.bookstore.domain.Category;
 import hh.swd20.bookstore.domain.CategoryRepository;
+import hh.swd20.bookstore.domain.User;
+import hh.swd20.bookstore.domain.UserRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -23,7 +25,7 @@ public class BookstoreApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner bookDemo(BookRepository brepository, CategoryRepository crepository) {
+	public CommandLineRunner bookDemo(BookRepository brepository, CategoryRepository crepository, UserRepository urepository) {
 		return (args) -> {
 			log.info("Create a few categories");
 			Category category1 = new Category("Fiction");
@@ -37,6 +39,12 @@ public class BookstoreApplication {
 			log.info("Save some books");
 			brepository.save(new Book("Pimeät kuut", "Tommi Kinnunen", 2022, "9789510480991", 28.95, category1));
 			brepository.save(new Book("Opetuslapsi", "Kari Hotakainen", 2022, "9789523880603", 25.95, category1));
+			
+			log.info("Create users");
+			User user1 = new User("user", "$2a$10$5Qit9SPnlUvMy4Mt.w820O23qdlh./i6nTCKdn0wYnSw48kI4fOLa", "user@user.com", "USER");
+			User user2 = new User("admin", "$2a$10$vmelhoIM5wyHT6c6jermtOuVvZVrdXe0ucj9vNmlwFq9HDgHW4pMe", "admin@admin.com", "ADMIN");
+			urepository.save(user1);
+			urepository.save(user2);
 			
 			log.info("Fetch all the categories");
 			for (Category category : crepository.findAll()) {
