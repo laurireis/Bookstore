@@ -9,17 +9,23 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import hh.swd20.bookstore.web.BookController;
+import hh.swd20.bookstore.web.CategoryController;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-class BookstoreApplicationTests {
+public class BookstoreSmokeTests {
 	
 	@Autowired
-	private BookController bookController;
+	private BookController bcontroller;
 	
+	@Autowired
+	private CategoryController ccontroller;
+	
+	// Testing that the context is creating the controllers.
 	@Test
-	public void contextLoads() {
-		assertThat(bookController).isNotNull();
+	public void contextLoads() throws Exception {
+		assertThat(bcontroller).isNotNull();
+		assertThat(ccontroller).isNotNull();
 	}
-
+	
 }
